@@ -1,0 +1,110 @@
+<% include partials/header %> 
+
+<% include partials/navigation %> 
+
+        <!-- Search Bar -->
+        <div class="container">
+                <form class="form-group" action="/" method="GET"> 
+                    <input type="text" class="form-control" name="certifdetails" placeholder="Rechercher Certificat">
+                    <button type="submit" class="btn btn-primary"> <i class="fas fa-search"></i> Rechercher</button>
+                </form>
+        </div>
+
+        <% var certif = clickedcertif[0] %>
+
+        <div class="container">
+            <div class="jumbotron">
+                <!-- Row 1 of Jumbotron -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 movietitle">
+                        <span><%= certif.titre %> </span>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-1 rating">
+                        <i class="fas fa-star"></i>&nbsp;
+                        <span><i class="fa fa-star"></i>&nbsp;</span>
+                        <span><i class="fa fa-star"></i></span>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-5 rating">
+                        <span class="rating1">
+                             <span class="max-rating"> </span><br>
+                            <div class="votes"></div><br><br>
+                            <%= certif.numCert %>
+                        </span>
+                    </div>   
+                </div>
+                <!-- Row 2 of Jumbotron -->
+                <div class="row row2">
+                    <div class="col-lg-3 col-md-3">
+                        <%= 'CAMARA Laby Damaro' %>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <% certif.titre; %> 
+                    </div>
+                </div>
+            </div>
+
+            
+                <div class="row row2">
+                    <div class="col-12">
+                        <img id="imgd" src = <%= certif.urlpng %> alt="Image Not Available" onerror="this.onerror=null;this.src='Images/notfound.jpg';">            
+                    </div>
+                </div>
+
+                <!-- Plot -->
+                <hr>
+                <div class="row row2">
+                    <h2>Réalisation</h2>
+                    <div class="ml-10">
+                        <%= certif.description; %>
+                    </div>
+                </div>
+                <hr>
+
+                 <!-- Cast Information -->
+                <div class="castinfo">
+                    <div>
+                        <strong>Auteur du cours:</strong> &nbsp; <span><%= certif.auteur %></span>
+                    </div>
+                    <div>
+                        <strong>Plateforme :</strong> &nbsp; <span><%= certif.plateforme %></span>
+                    </div>
+                    <div>
+                        <% var mois = ['Janvier', 'Février', 'Mars', 'Avril','Mai', 'Juin', 'Juillet', 'Aoùt','Septembre','Octobre', 'Novembre','Decembre'] ; %>
+                        <strong>Date d'obtention :</strong> &nbsp; <span><%= certif.dateCertif.split('-')[2][0] +''+certif.dateCertif.split('-')[2][1] +'/'+certif.dateCertif.split('-')[1] +'/'+certif.dateCertif.split('-')[0] %></span>
+                    </div>
+                </div>
+
+
+                <hr>
+                <!-- External Ratings -->
+                <div class="row">
+                    <div class="col-lg-12 externalratings">
+                        <!-- MetaScore -->
+                        <span></span>
+                        <span style="padding: 10px" class="overwhelmingdislike"><%= certif.titre %> </span>
+                        <span style="padding: 10px" class="mixed"><%= certif.titre %> </span>
+                        <span style="padding: 10px" class="universalacclaim"><%= certif.titre%> </span><br><br>
+                        <span style="padding: 10px"><%= certif.titre %> </span>
+                        <span style="padding: 10px"> <a href="https://www.camratek.com" target="_blank">CAMARA Laby Damaro</a></span>           
+                        <!-- Rotten Tomatoes -->
+                        <img src="https://img.icons8.com/color/48/000000/tomato.png">
+                        <img src="https://img.icons8.com/color/48/000000/rotten-tomatoes.png">
+                        <span> <%= certif.id %> </span>
+                        <span style="padding: 10px"><a href="https://www.rottentomatoes.com" target="_blank">Rotten Tomatoes</a> </span>
+                    </div>
+                </div>
+
+                <hr>
+                    <!-- Awards -->
+                    <div style="background: rgb(239, 227, 164);color: black;padding: 20px">
+                        <div>in GOD WE TRUE</div>
+                    </div>
+                <hr>
+                <!-- Details -->
+
+
+        </div>
+
+
+<% include partials/footer %> 

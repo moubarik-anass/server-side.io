@@ -1,0 +1,57 @@
+<% include partials/header %> 
+
+<% include partials/navigation %> 
+
+
+
+<div class="container" id=>
+        <!--Jumbotron -->
+    <% include partials/jumbotrons %> 
+
+        <% if(searchquery == 404 ) { %>
+        <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+          <div class="card-header">ERROR!!</div>
+          <div class="card-body">
+            <h4 class="card-title">Désolé les id (1 et <%= taille %>!!)</h4>
+            <p class="card-text">404 - Not Found</p>
+          </div>
+        </div>
+    <% } else { %>
+        <div class="row">
+
+           <% for (var i = 0; i < cert.length; i++) { %>
+
+                
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <div class="thumbnail moviecard" >
+                            <div class="block" style="text-align: center">
+                                <a href="/moviedetails/"></a>
+                                <img id="imgdd" src="<%= cert[i].urlpng %>" alt="Image Not Available" onerror="this.onerror=null;this.src='Images/notfound.jpg';">
+                                <div>
+                                    <%= cert[i].titre %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-7 col-sm-6 ml-50">
+                        <div class="thumbnail moviecard" >
+                            <div class="block" style="text-align: center"> 
+                                <div>
+                                    <h3><%= cert[i].titre %></h3><hr>
+                                    <h6>Auteur du cours : <%=cert[i].auteur %></h6>
+                                    <h6>Plateforme : <%=cert[i].plateforme %></h6>
+                                    <h6>Date d'obtention : <%= cert[i].dateCertif.split("-")[2][0]+''+cert[i].dateCertif.split("-")[2][1]+'/'+cert[i].dateCertif.split("-")[1]+'/'+cert[i].dateCertif.split("-")[0] %></h6>
+                                    <h6>Description</h6>
+                                    <span class="year"><%= cert[i].description %></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            <% } %>
+
+        </div>    
+    <% } %> 
+</div>
+
+<% include partials/footer %>

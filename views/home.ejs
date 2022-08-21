@@ -1,0 +1,31 @@
+<% include partials/header %> 
+
+<% include partials/navigation %> 
+
+<div class="container">
+    <!--Jumbotron -->
+    <% include partials/jumbotrons %> 
+
+    <!--Trending-->
+    <div class="row"> 
+        <!-- loop -->   
+        <% for (var i = 0; i < certifs.length; i++) { %>
+        <div class="col-lg-3 col-sm-6">
+            <div class="thumbnail moviecard">
+                <div style="text-align: center">
+                	<% var imdblink = "https://www.imdb.com/title/" + certifs[i].id %> 
+                    <a href="/certifdetails/<%= certifs[i].id %>">
+                    	<img width=100% src = <%= certifs[i].urlpng %> alt="Image Not Available" onerror="this.onerror=null;this.src='Images/notfound.jpg';">
+                    	<div>
+                            <span class="title"><%= certifs[i].titre %></span></a>
+                            <span class="year">(<%= certifs[i].dateCertif %>)</span>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <!-- /Trending -->
+</div>
+
+<% include partials/footer %> 
